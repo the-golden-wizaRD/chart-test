@@ -7,12 +7,19 @@
 		<title>Document</title>
 
 		<style>
-			#myChart {
-				width: 900px !important;
-				height: 700px !important;
+			.chart-container {
+				position: relative;
+				margin: auto;
+				height: 80vh;
+				width: 80vw;
 				background-color: antiquewhite;
 			}
-			@media screen and (max-width: 992px) {
+
+			#myChart {
+				background-color: whitesmoke;
+				border: 1px dotted red;
+			}
+			/*@media screen and (max-width: 992px) {
 				#myChart {
 					width: 600px !important;
 				}
@@ -24,13 +31,30 @@
 			}
 			@media screen and (max-width: 576px) {
 				#myChart {
-					width: 100% !important;
+					width: 450px !important;
 				}
 			}
+			@media screen and (max-width: 470px) {
+				#myChart {
+					width: 350px !important;
+				}
+			}
+			@media screen and (max-width: 370px) {
+				#myChart {
+					width: 300px !important;
+				}
+			}
+			@media screen and (max-width: 320px) {
+				#myChart {
+					width: 250px !important;
+				}
+			} */
 		</style>
 	</head>
 	<body>
-		<canvas id="myChart"></canvas>
+		<div class="chart-container">
+			<canvas id="myChart"></canvas>
+		</div>
 
 		<script type="text/javascript">
 			var ctx = document.getElementById('myChart').getContext('2d');
@@ -117,7 +141,25 @@
 
 				// Configuration options go here
 				options: {
-					responsive: false,
+					maintainAspectRatio: false,
+					scales: {
+						yAxes: [
+							{
+								stacked: false,
+								gridLines: {
+									display: true,
+									color: 'rgba(255,99,132,0.2)',
+								},
+							},
+						],
+						xAxes: [
+							{
+								gridLines: {
+									display: false,
+								},
+							},
+						],
+					},
 					legend: {
 						position: 'bottom',
 					},
